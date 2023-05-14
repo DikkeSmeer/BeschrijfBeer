@@ -3,27 +3,37 @@ import java.util.Scanner;
 
 abstract class MenuItem {
     // een menu item heeft een naam en een execute functie, deze word overwritten per item
-    String name;
+    protected String name;
     public MenuItem(String name) {
         this.name = name;
     }
-    String getName() {
+    protected String getName() {
         return name;
-    }
-    public void execute(){};
+    };
+    public abstract void execute();
 }
 
-class TemplateOverzichtItem extends MenuItem {
-    public TemplateOverzichtItem(String name) {
+class LoginMenuItem extends MenuItem {
+    public LoginMenuItem(String name) {
         super(name);
     }
     @Override
     public void execute() {
-        TemplateMenu tmenu = new TemplateMenu();
+        LoginMenu tmenu = new LoginMenu();
         tmenu.createMenu();
         tmenu.execute(tmenu.printMenu());
     }
 }
+
+class LoginItem extends MenuItem {
+    public LoginItem(String name) {super(name);}
+    @Override
+    public void execute(){
+        //Voer login functie uit
+    }
+}
+
+
 class BerenOverzichtItem extends MenuItem {
     public BerenOverzichtItem(String name) {
         super(name);
@@ -42,7 +52,8 @@ class ExitItem extends MenuItem {
     }
     @Override
     public void execute() {
-        // Voert de void uit en stopt de 'loop'
+        //feedback
+        // voert geen void uit.
     }
 }
 
@@ -53,6 +64,8 @@ class TerugItem extends MenuItem {
     @Override
     public void execute() {
         // Niet netjes
+
+        // een echte terugItem
 
         System.out.println("Terug naar HoofdMenu");
         System.out.println("----------------------");

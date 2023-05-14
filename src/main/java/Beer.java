@@ -4,7 +4,7 @@ public class Beer {
     private static int id = 0;
     private String name;
     private String description;
-    private ArrayList<BeerExtraInformatie> options;
+    private ArrayList<BeerExtraOpties> options;
 
     // constructor
     public Beer(String name) {
@@ -33,11 +33,50 @@ public class Beer {
         this.description = description;
     }
 
-    // Template Options
-    public ArrayList<BeerExtraInformatie> getOptions() {
-        return options;
-    }
-    public void setOptions(ArrayList<BeerExtraInformatie> options) {
+    // Test beertje options
+
+    public void setOptions(ArrayList<BeerExtraOpties> options){
         this.options = options;
+    }
+    public int getPriceTotalBeer(){
+        int total = 0;
+        int extraKosten = 0;
+
+        if (options.size() > 0 && options.size() <= 3){
+            extraKosten = 0;
+        }
+
+        if (options.size() >= 4 && options.size() <= 6){
+            extraKosten = 1;
+        }
+
+        if (options.size() >= 7){
+            extraKosten = 2;
+        }
+
+        for (BeerExtraOpties option : options) {
+            total += extraKosten;
+            total += option.getOptionPrice();
+        }
+        return total;
+    }
+
+    public boolean isKindvriendelijk(int size, boolean containsGlassEyes, boolean containsPlastic, boolean machineWashable) {
+
+        // size in cm
+        if (size <= 5 || size >= 40) {
+            return false; // Niet kindvriendelijk
+        }
+
+        if (containsGlassEyes || containsPlastic) {
+            return false; // Niet kindvriendelijk
+        }
+
+        if (!machineWashable) {
+            return false; // Niet kindvriendelijk
+        }
+
+        // Als geen van de bovenstaande voorwaarden is voldaan, dan is de beer kindvriendelijk
+        return true;
     }
 }

@@ -17,5 +17,6 @@ class BerenBekijkenItemTest {
         for (Beer beer : alleBeertjes){
             System.out.println("[ID: " + beer.getID() + "] Naam: " + beer.getName() + " Beschrijving: [" +beer.getDescription() + "]");
         }
+
     }
 }

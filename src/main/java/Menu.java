@@ -20,7 +20,6 @@ class HoofdMenu extends Menu {
         // add opties in het menu die een eigen extend hebben - zoals offerte aanmaak menu
         // - OfferteMenu - KlantenMenu - ExtrasMenu
         menu.add(new BerenOverzichtItem("Beren Overzicht"));
-        menu.add(new TemplateOverzichtItem("Template Overzicht [WIP]"));
         menu.add(new ExitItem("Afsluiten"));
 
 
@@ -33,10 +32,10 @@ class HoofdMenu extends Menu {
 
 // alle sub-menu's die items uitvoeren hieronder
 // Templates Sub Menu
-class TemplateMenu extends Menu {
+class LoginMenu extends Menu {
     public void createMenu() {
-        menu.add(new TemplateAanmakenItem("Template Aanmaken"));
-        menu.add(new TemplatesBekijkenItem("Templates Bekijken"));
+        menu.add(new TemplateAanmakenItem("Inloggen"));
+        menu.add(new TemplatesBekijkenItem("Registreren"));
 
 
         menu.add(new TerugItem("Terug"));
